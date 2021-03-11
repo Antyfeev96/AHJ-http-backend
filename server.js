@@ -1,7 +1,14 @@
 const http = require('http');
 const Koa = require('koa');
+const koaBody = require('koa-body');
 
 const app = new Koa();
+
+app.use(koaBody({
+  urlencoded: true,
+  multipart: true,
+}));
+
 app.use(async (ctx) => {
   // const { name, age } = ctx.request;
 
@@ -9,12 +16,10 @@ app.use(async (ctx) => {
     'Access-Control-Allow-Origin': '*',
   });
 
-  console.log(ctx.request.query);
+  console.log(ctx.response.body);
   ctx.response.body = ctx.request.query;
-  console.log(123);
 });
 
-const port = 7070;
+const port = process.env.PORT || 7070;
 
-const server = http.createServer(app.callback());
-server.listen(port);
+const server = http.createServer(app.callback()).listen(port);

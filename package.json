@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm install",
     "build": "webpack",
     "start": "forever server.js",
     "watch": "forever -w server.js",
     "stop": "forever stopall",
     "lint": "eslint .",
     "test": "jest"
+  },
+  "engines": {
+    "node": "11.x"
   },
   "repository": {
     "type": "git",
