@@ -26,6 +26,16 @@ const ESLintPlugin = require('eslint-webpack-plugin');
  */
 
 module.exports = {
+  // webpack: (config, { isServer }) => {
+  //   // Fixes npm packages that depend on `fs` module
+  //   if (!isServer) {
+  //     config.node = {
+  //       fs: 'empty',
+  //       net: 'empty',
+  //     };
+  //   }
+  // },
+
   resolve: {
     fallback: {
       util: require.resolve('util/'),
