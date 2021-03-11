@@ -27,7 +27,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   node: {
-    fs: "empty"
+    fs: 'empty',
   },
 
   resolve: {
