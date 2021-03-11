@@ -22,4 +22,6 @@ app.use(async (ctx) => {
 
 const port = process.env.PORT || 7070;
 
-const server = http.createServer(app.callback()).listen(port);
+const server = http.createServer(app.callback());
+
+server.listen(port);

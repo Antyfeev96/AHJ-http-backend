@@ -26,7 +26,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
  */
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './server.js',
   mode: 'development',
   // output: {
   //   filename: 'bundle.js',
