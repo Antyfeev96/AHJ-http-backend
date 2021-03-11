@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-// const path = require('path');
-// const fs = require('fs');
 const http = require('http');
 const Koa = require('koa');
 const koaBody = require('koa-body');
@@ -13,14 +11,13 @@ app.use(koaBody({
 }));
 
 app.use(async (ctx) => {
-  // const { name, age } = ctx.request;
-
   ctx.response.set({
     'Access-Control-Allow-Origin': '*',
   });
 
-  console.log(ctx.response.body);
-  ctx.response.body = ctx.request.query;
+  console.log(ctx.request.querystring);
+
+  ctx.response.body = ctx.request.querystring;
 });
 
 const port = process.env.PORT || 7070;
