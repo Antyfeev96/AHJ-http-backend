@@ -26,6 +26,11 @@ const ESLintPlugin = require('eslint-webpack-plugin');
  */
 
 module.exports = {
+  resolve: {
+    fallback: {
+      util: require.resolve('util/'),
+    },
+  },
   entry: './server.js',
   mode: 'development',
   // output: {
