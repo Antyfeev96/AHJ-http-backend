@@ -29,6 +29,14 @@ module.exports = {
   resolve: {
     fallback: {
       util: require.resolve('util/'),
+      path: require.resolve('path-browserify'),
+      http: require.resolve('stream-http'),
+      stream: require.resolve('stream-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      os: require.resolve('os-browserify/browser'),
+      buffer: require.resolve('buffer/'),
+      zlib: require.resolve('browserify-zlib'),
+      assert: require.resolve('assert/'),
     },
   },
   entry: './server.js',
