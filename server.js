@@ -6,28 +6,26 @@ const koaBody = require('koa-body');
 
 const app = new Koa();
 
-const ticket1 = {
-  id: 1,
-  name: 'ticket1',
-  status: false,
-  created: '11.03.2021 21:36',
-};
-
-const ticket2 = {
-  id: 2,
-  name: 'ticket2',
-  status: false,
-  created: '11.03.2021 21:36',
-};
-
-const ticket3 = {
-  id: 3,
-  name: 'ticket3',
-  status: true,
-  created: '11.03.2021 21:36',
-};
-
-const tickets = [ticket1, ticket2, ticket3];
+const tickets = [
+  {
+    id: 1,
+    name: 'Посеять хлеб',
+    status: true,
+    created: '09.03.2021 16:11',
+  },
+  {
+    id: 2,
+    name: 'Сделать этот макет',
+    status: false,
+    created: '09.03.2021 13:55',
+  },
+  {
+    id: 3,
+    name: 'Преисполниться в своём познании настолько, что как-будто я уже 100 триллионов миллиардов лет тут живу',
+    status: false,
+    created: '11.03.2021 21:36',
+  },
+];
 
 app.use(koaBody({
   urlencoded: true,
@@ -35,7 +33,7 @@ app.use(koaBody({
 }));
 
 app.use(async (ctx) => {
-  const { method } = ctx.request.query;
+  const { method, id } = ctx.request.query;
   console.log();
 
   ctx.response.set({
@@ -50,7 +48,9 @@ app.use(async (ctx) => {
     case 'allTickets':
       ctx.response.body = tickets;
       return;
-    // TODO: обработка остальных методов
+    case 'createTicket':
+      ctx.response.body = 'Task created';
+      return;
     default:
       ctx.response.status = 404;
       return;
