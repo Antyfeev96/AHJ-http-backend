@@ -15,3 +15,5 @@ const formatterDate = () => {
 
   return `${formatter.format(date)} ${dateTime}`;
 };
+
+module.exports.formatterDate = formatterDate;

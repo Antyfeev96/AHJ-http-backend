@@ -6,7 +6,7 @@
 const http = require('http');
 const Koa = require('koa');
 const koaBody = require('koa-body');
-const formatterDate = require('./src/js/formatterDate');
+const { formatterDate } = require('./src/js/formatterDate');
 
 const app = new Koa();
 
@@ -61,15 +61,15 @@ app.use(koaBody({
 }));
 
 app.use(async (ctx) => {
-  console.log(ctx.query);
   const {
-    method, shorttext, fulltext,
+    method, shorttext, fulltext, id,
   } = ctx.request.query;
 
   console.log(ctx.request.query);
 
   ctx.response.set({
     'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
   });
 
   switch (method) {
@@ -93,6 +93,12 @@ app.use(async (ctx) => {
       });
 
       ctx.response.body = tickets[tickets.length - 1];
+      return;
+    case 'deleteById':
+      ctx.response.body = tickets.find((ticket) => ticket.id === +id);
+      return;
+    case 'ticketById':
+      ctx.response.body = fullTickets.find((ticket) => ticket.id === +id);
       return;
     default:
       ctx.response.status = 404;
